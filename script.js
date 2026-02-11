@@ -1,4 +1,11 @@
-// Mobile Menu Toggle
+window.addEventListener('load', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+});
+
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -7,7 +14,6 @@ mobileMenuBtn?.addEventListener('click', () => {
     mobileMenuBtn.classList.toggle('active');
 });
 
-// Smooth Scroll for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -28,7 +34,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar Background on Scroll
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
@@ -44,7 +49,6 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Form Submission
 const contactForm = document.querySelector('.contact-form');
 
 contactForm?.addEventListener('submit', (e) => {
@@ -77,7 +81,6 @@ contactForm?.addEventListener('submit', (e) => {
     contactForm.reset();
 });
 
-// Add animation keyframes
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -92,7 +95,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// FAST Intersection Observer - all elements same timing
 const observerOptions = {
     root: null,
     rootMargin: '0px',
@@ -107,18 +109,10 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// All animated elements - same fast duration, no delay
 const animatedElements = document.querySelectorAll(
     '.product-card, .advantage-card, .gallery-item-large, .gallery-item-small, ' +
     '.feature-item, .stat-item, .about-image, .about-content, ' +
-    '.section-header, .contact-info, .contact-form'
-);
-
-// All animated elements - same fast duration, no delay
-const animatedElements = document.querySelectorAll(
-    '.product-card, .advantage-card, .gallery-item-large, .gallery-item-small, ' +
-    '.feature-item, .stat-item, .about-image, .about-content, ' +
-    '.section-header, .contact-info, .contact-form, .partner-card'  // <-- добавлено .partner-card
+    '.section-header, .contact-info, .contact-form, .partner-card'
 );
 
 animatedElements.forEach(el => {
@@ -127,7 +121,6 @@ animatedElements.forEach(el => {
     observer.observe(el);
 });
 
-// Add CSS for fast animation
 const animStyle = document.createElement('style');
 animStyle.textContent = `
     .animate-in {
@@ -162,7 +155,6 @@ animStyle.textContent = `
 `;
 document.head.appendChild(animStyle);
 
-// Parallax Effect
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroImage = document.querySelector('.hero-image img');
@@ -171,7 +163,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Gallery Lightbox
 document.querySelectorAll('.gallery-item-large, .gallery-item-small').forEach(item => {
     item.addEventListener('click', () => {
         const img = item.querySelector('img');
@@ -216,7 +207,6 @@ document.querySelectorAll('.gallery-item-large, .gallery-item-small').forEach(it
     });
 });
 
-// Counter Animation
 const animateCounter = (element, target, duration = 1500) => {
     let start = 0;
     const increment = target / (duration / 16);
